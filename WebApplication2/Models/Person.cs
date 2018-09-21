@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+
+
+namespace WebApplication2.Models
+{
+    public class Person
+    {
+        [Key]
+    //Properties of User Information
+        public int UserID { get; set; }
+        public int LOOKRoleID { get; set; }
+        public string RoleName { get; set; }
+        public bool? IsRoleActive { get; set; }
+        [Required(ErrorMessage = "*")]
+        [Display(Name = "Login ID")]
+        public string LoginName { get; set; }
+        [Required(ErrorMessage = "*")]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+        [Required(ErrorMessage = "*")]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+        [Required(ErrorMessage = "*")]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+        public string Gender { get; set; }
+    }
+
+    public class LOOKUPAvailableRole
+    {
+        [Key]
+        public int LOOKUPRoleID { get; set; }
+        public string RoleName { get; set; }
+        public string RoleDescription { get; set; }
+    }
+
+    public class Gender
+    {
+        public string Text { get; set; }
+        public string Value { get; set; }
+    }
+
+    public class UserGender
+    {
+        public string SelectedGender { get; set; }
+        public IEnumerable<Gender> Gender { get; set; }
+    }
+    public class UserDataView
+    {
+        public IEnumerable<Person> UserProfile { get; set; }
+        public UserGender UserGender { get; set; }
+    }
+
+
+
+
+}
